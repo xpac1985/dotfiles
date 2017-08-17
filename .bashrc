@@ -7,7 +7,7 @@
 shopt -s checkwinsize
 
 # always follow symlinks to real target
-set -P
+set -o physical
 
 # export and define the prompt command to display last return value and use a different color for root
 export PROMPT_COMMAND=__prompt_command
