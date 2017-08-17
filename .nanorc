@@ -1,0 +1,18 @@
+# auto indext a new line as the line before it
+set autoindent
+
+# always show cursor information
+set const
+
+# enable history for search/replace
+set historylog
+
+# enable extended regex searches
+set regexp
+
+# make home key jump to first char on line instead of beginning of line
+set smarthome
+
+# 1 tab = 2 spaces
+set tabsize 2
+set tabstospaces
