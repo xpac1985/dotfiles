@@ -1,3 +1,6 @@
+export EDITOR="nano"
+export TZ="Europe/Berlin"
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
