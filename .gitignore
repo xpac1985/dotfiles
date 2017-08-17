@@ -4,4 +4,7 @@
 ### now selectively unignore
 
 !.gitignore
+
+!.bashrc
+!.profile
 !.tmux.conf
