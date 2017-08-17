@@ -1,4 +1,7 @@
-# all ssh
-.ssh/id_rsa
-.ssh/id_rsa.pub
-.ssh/authorized_keys
+### ignore all
+**/*
+
+### now selectively unignore
+
+!.gitignore
+!.tmux.conf
