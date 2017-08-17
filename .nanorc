@@ -16,3 +16,6 @@ set smarthome
 # 1 tab = 2 spaces
 set tabsize 2
 set tabstospaces
+
+# scroll line-by-line instead of jumping half a page
+set smooth

@@ -6,5 +6,6 @@
 !.gitignore
 
 !.bashrc
+!.nanorc
 !.profile
 !.tmux.conf
