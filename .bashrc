@@ -81,3 +81,6 @@ shopt -s globstar
 
 # tmux TERM fix
 alias tmux='TERM=screen-256color tmux'
+
+# grep
+alias grepex='grep -P'
