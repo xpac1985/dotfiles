@@ -84,3 +84,6 @@ alias tmux='TERM=screen-256color tmux'
 
 # grep
 alias grepex='grep -P'
+
+# nano
+alias nanobr='nano -\$cwS'
