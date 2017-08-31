@@ -2,7 +2,7 @@
 
 if [ ! -f ~/.bashrc ]
 then
-  ln -s ./bashrc ~/.bashrc
+  ln -s dotfiles/bashrc ~/.bashrc
   echo "bashrc linked"
 else
   echo ".bashrc already exists"
@@ -10,7 +10,7 @@ fi
 
 if [ ! -f ~/.nanorc ]
 then
-  ln -s ./nanorc ~/.nanorc
+  ln -s dotfiles/nanorc ~/.nanorc
   echo "nanorc linked"
 else
   echo ".nanorc already exists"
@@ -18,7 +18,7 @@ fi
 
 if [ ! -f ~/.tmux.conf ]
 then
-  ln -s ./tmux.conf ~/.tmux.conf
+  ln -s dotfiles/tmux.conf ~/.tmux.conf
   echo "tmux.conf linked"
 else
   echo ".tmux.conf already exists"
@@ -26,7 +26,7 @@ fi
 
 if [ ! -f ~/.profile ]
 then
-  ln -s ./profile ~/.profile
+  ln -s dotfiles/profile ~/.profile
   echo "profile linked"
 else
   echo ".profile already exists"

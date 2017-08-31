@@ -13,18 +13,28 @@ set -o physical
 export PROMPT_COMMAND=__prompt_command
 
 function __prompt_command() {
+  ### 0 = black, 1 = red, 2 = green, 3 = yellow
+  ### 4 = blue, 5 = violet, 6 = cyan, 7 = white
   local EXIT="$?"
-  local HOST_COLOR="0;38;05;202m"
+  local HOST_COLOR="3"
+  
+  PS1="\[$(tput bold)\]\[$(tput setaf 7)\]\t "
   if [ $EXIT != 0 ]; then
-     PS1="\[\e[1;97m\]\t \[\e[0;31m\]\$?\[\e[0;37m\] "
+     PS1+="\[$(tput setaf 1)\]"
   else
-     PS1="\[\e[1;97m\]\t \[\e[0;32m\]\$?\[\e[0;37m\] "
+     PS1+="\[$(tput setaf 2)\]"
   fi
+  
+  PS1+="\$? \[$(tput setaf 7)\]["
+  
   if [ $EUID != 0 ]; then
-    PS1+="\[\e[0;32m\]\u\[\e[1;37m\]@\[\e[$HOST_COLOR\]\h \[\e[0;33m\]\w \[\e[1;37m\]\\$\[\e[0m\] "
+    PS1+="\[$(tput setaf 7)\]\u"
   else
-    PS1+="\[\e[1;38;05;160m\]\u\[\e[1;37m\]@\[\e[$HOST_COLOR\]\h \[\e[0;33m\]\w \[\e[1;37m\]\\$\[\e[0m\] "
+    PS1+="\[$(tput setaf 1)\]\u"
   fi
+  
+  PS1+="\[$(tput setaf 7)\]@\[$(tput setaf $HOST_COLOR)\]\h\[$(tput setaf 7)\]] \[$(tput setaf 2)\]\$PWD \[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
+
   history -a  
 }
 
