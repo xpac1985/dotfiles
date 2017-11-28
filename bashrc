@@ -97,3 +97,6 @@ alias grepex='grep -P'
 
 # nano
 alias nanobr='nano -\$'
+
+# less should use ANSI color codes
+export LESS='-R'
