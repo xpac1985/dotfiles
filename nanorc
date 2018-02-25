@@ -1,6 +1,3 @@
-# set symbols that show tabs and spaces when pressing Alt+P
-set whitespace "»·"
-
 # always show cursor information
 set const
 

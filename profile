@@ -1,4 +1,4 @@
-export EDITOR="nano"
+export EDITOR="vim"
 export TZ="Europe/Berlin"
 
 # if running bash

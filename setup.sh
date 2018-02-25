@@ -31,3 +31,11 @@ then
 else
   echo ".profile already exists"
 fi
+
+if [ ! -f ~/.vimrc ]
+then
+  ln -s dotfiles/vimrc ~/.vimrc
+  echo "vimrc linked"
+else
+  echo ".vimrc already exists"
+fi
