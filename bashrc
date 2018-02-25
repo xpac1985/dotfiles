@@ -96,7 +96,7 @@ alias tmux='TERM=screen-256color tmux'
 alias grepex='grep -P'
 
 # nano
-alias nanobr='nano -\$'
+alias nano='vim'
 
 # less should use ANSI color codes
 export LESS='-R'
