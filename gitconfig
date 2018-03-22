@@ -1,6 +1,6 @@
 [alias]
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lola = log --graph --date=iso --all --pretty=format:'%C(yellow)%h %Cred%ad %Cgreen%d %Creset%s'
 [color]
   branch = auto
   diff = auto
