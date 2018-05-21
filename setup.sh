@@ -24,7 +24,7 @@ else
       echo -e "${YELLOW}.bashrc already exists, and it sources dotfiles/bashrc${RESET}"
     else
       # file does not have a source statement for dotfiles
-      echo 'source dotfiles/bashrc' >> ~/.bashrc
+      printf '\nsource dotfiles/bashrc\n' >> ~/.bashrc
       if [ $? -eq 0 ]
       then
         # successfully added source statement to file
