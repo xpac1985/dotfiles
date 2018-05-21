@@ -9,3 +9,6 @@
   ui = true
 [http]
   postBuffer = 2M
+[user]
+	name = xpac
+	email = xpac@areafunky.net
