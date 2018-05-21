@@ -10,7 +10,7 @@ RESET='\033[0m'
 if [ ! -f ~/.bashrc ]
 then
   # file doesn't exist
-  ln -s dotfiles/bashrc ~/.bashrc && echo -e "${GREEN}.bashrc linked${RESET}"
+  ln -s dotfiles/bashrc ~/.bashrc && echo -e "${GREEN}.bashrc link created${RESET}"
 else
   if [ -L ~/.bashrc ] && [ "$(readlink ~/.bashrc)" = "dotfiles/bashrc" ]
   then
@@ -28,10 +28,10 @@ else
       if [ $? -eq 0 ]
       then
         # successfully added source statement to file
-        echo -e "${YELLOW}Added 'source' statement to ~/.bashrc${RESET}"
+        echo -e "${YELLOW}created 'source' statement in ~/.bashrc to dotfiles${RESET}"
       else
         # failed to add source statement to file
-        echo -e "${RED}Failed to add 'source' statement to ~/.bashrc${RESET}"
+        echo -e "${RED}failed to create 'source' statement in ~/.bashrc to dotfiles${RESET}"
       fi
     fi
   fi
@@ -43,7 +43,7 @@ fi
 if [ ! -f ~/.nanorc ]
 then
   # file doesn't exist
-  ln -s dotfiles/nanorc ~/.nanorc && echo -e "${GREEN}.nanorc linked${RESET}"
+  ln -s dotfiles/nanorc ~/.nanorc && echo -e "${GREEN}.nanorc link created${RESET}"
 else
   if [ -L ~/.nanorc ] && [ "$(readlink ~/.nanorc)" = "dotfiles/nanorc" ]
   then
@@ -69,7 +69,7 @@ fi
 if [ ! -f ~/.tmux.conf ]
 then
   # file doesn't exist
-  ln -s dotfiles/tmux.conf ~/.tmux.conf && echo -e "${GREEN}.tmux.conf linked${RESET}"
+  ln -s dotfiles/tmux.conf ~/.tmux.conf && echo -e "${GREEN}.tmux.conf link created${RESET}"
 else
   if [ -L ~/.tmux.conf ] && [ "$(readlink ~/.tmux.conf)" = "dotfiles/tmux.conf" ]
   then
@@ -95,7 +95,7 @@ fi
 if [ ! -f ~/.profile ]
 then
   # file doesn't exist
-  ln -s dotfiles/profile ~/.profile && echo -e "${GREEN}.profile linked${RESET}"
+  ln -s dotfiles/profile ~/.profile && echo -e "${GREEN}.profile link created${RESET}"
 else
   if [ -L ~/.profile ] && [ "$(readlink ~/.profile)" = "dotfiles/profile" ]
   then
@@ -121,7 +121,7 @@ fi
 if [ ! -f ~/.vimrc ]
 then
   # file doesn't exist
-  ln -s dotfiles/vimrc ~/.vimrc && echo -e "${GREEN}.vimrc linked${RESET}"
+  ln -s dotfiles/vimrc ~/.vimrc && echo -e "${GREEN}.vimrc link created${RESET}"
 else
   if [ -L ~/.vimrc ] && [ "$(readlink ~/.vimrc)" = "dotfiles/vimrc" ]
   then
@@ -147,7 +147,7 @@ fi
 if [ ! -f ~/.gitconfig ]
 then
   # file doesn't exist
-  ln -s dotfiles/gitconfig ~/.gitconfig && echo -e "${GREEN}.gitconfig linked${RESET}"
+  ln -s dotfiles/gitconfig ~/.gitconfig && echo -e "${GREEN}.gitconfig link created${RESET}"
 else
   if [ -L ~/.gitconfig ] && [ "$(readlink ~/.gitconfig)" = "dotfiles/gitconfig" ]
   then
