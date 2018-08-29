@@ -58,6 +58,14 @@ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-no
   }
 fi
 
+if [ ! -f /opt/splunk/bin/setSplunkEnv ]; then
+  source /opt/splunk/bin/setSplunkEnv
+fi
+
+if [ ! -f /opt/splunkforwarder/bin/setSplunkEnv ]; then
+  source /opt/splunkforwarder/bin/setSplunkEnv
+fi
+
 # shortcut to create backup of a file
 function bu() {
     cp $@ $@.`date +%y%m%d`~;
