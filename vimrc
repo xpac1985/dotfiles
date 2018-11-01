@@ -13,3 +13,6 @@ set shiftwidth=2
 
 " force UTF8
 set encoding=utf-8
+
+" enable syntax highlighting
+syntax on
