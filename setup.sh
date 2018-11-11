@@ -10,21 +10,21 @@ RESET='\033[0m'
 if [ ! -f ~/.bashrc ]
 then
   # file doesn't exist
-  ln -s dotfiles/bashrc ~/.bashrc && echo -e "${GREEN}.bashrc link created${RESET}"
+  ln -s ~/dotfiles/bashrc ~/.bashrc && echo -e "${GREEN}.bashrc link created${RESET}"
 else
-  if [ -L ~/.bashrc ] && [ "$(readlink ~/.bashrc)" = "dotfiles/bashrc" ]
+  if [ -L ~/.bashrc ] && [ "$(readlink ~/.bashrc)" = "~/dotfiles/bashrc" ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.bashrc already linked to dotfiles${RESET}"
   else
     # file exists, but is not a valid symlink to dotfiles
-    if grep -q 'source dotfiles/bashrc' ~/.bashrc
+    if grep -q 'source ~/dotfiles/bashrc' ~/.bashrc
     then
       # file has a source statement for dotfiles
       echo -e "${YELLOW}.bashrc already exists, and it sources dotfiles/bashrc${RESET}"
     else
       # file does not have a source statement for dotfiles
-      printf '\nsource dotfiles/bashrc\n' >> ~/.bashrc
+      printf '\nsource ~/dotfiles/bashrc\n' >> ~/.bashrc
       if [ $? -eq 0 ]
       then
         # successfully added source statement to file
@@ -43,15 +43,15 @@ fi
 if [ ! -f ~/.nanorc ]
 then
   # file doesn't exist
-  ln -s dotfiles/nanorc ~/.nanorc && echo -e "${GREEN}.nanorc link created${RESET}"
+  ln -s ~/dotfiles/nanorc ~/.nanorc && echo -e "${GREEN}.nanorc link created${RESET}"
 else
-  if [ -L ~/.nanorc ] && [ "$(readlink ~/.nanorc)" = "dotfiles/nanorc" ]
+  if [ -L ~/.nanorc ] && [ "$(readlink ~/.nanorc)" = "~/dotfiles/nanorc" ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.nanorc already linked to dotfiles${RESET}"
   else
     # file exists, but is not a valid symlink to dotfiles
-    mv ~/.nanorc ~/.nanorc.bak && ln -s dotfiles/nanorc ~/.nanorc
+    mv ~/.nanorc ~/.nanorc.bak && ln -s ~/dotfiles/nanorc ~/.nanorc
     if [ $? -eq 0 ]
     then
       # successfully added moved old file and linked to dotfiles
@@ -69,15 +69,15 @@ fi
 if [ ! -f ~/.tmux.conf ]
 then
   # file doesn't exist
-  ln -s dotfiles/tmux.conf ~/.tmux.conf && echo -e "${GREEN}.tmux.conf link created${RESET}"
+  ln -s ~/dotfiles/tmux.conf ~/.tmux.conf && echo -e "${GREEN}.tmux.conf link created${RESET}"
 else
-  if [ -L ~/.tmux.conf ] && [ "$(readlink ~/.tmux.conf)" = "dotfiles/tmux.conf" ]
+  if [ -L ~/.tmux.conf ] && [ "$(readlink ~/.tmux.conf)" = "~/dotfiles/tmux.conf" ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.tmux.conf already linked to dotfiles${RESET}"
   else
     # file exists, but is not a valid symlink to dotfiles
-    mv ~/.tmux.conf ~/.tmux.conf.bak && ln -s dotfiles/tmux.conf ~/.tmux.conf
+    mv ~/.tmux.conf ~/.tmux.conf.bak && ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
     if [ $? -eq 0 ]
     then
       # successfully added moved old file and linked to dotfiles
@@ -95,15 +95,15 @@ fi
 if [ ! -f ~/.profile ]
 then
   # file doesn't exist
-  ln -s dotfiles/profile ~/.profile && echo -e "${GREEN}.profile link created${RESET}"
+  ln -s ~/dotfiles/profile ~/.profile && echo -e "${GREEN}.profile link created${RESET}"
 else
-  if [ -L ~/.profile ] && [ "$(readlink ~/.profile)" = "dotfiles/profile" ]
+  if [ -L ~/.profile ] && [ "$(readlink ~/.profile)" = "~/dotfiles/profile" ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.profile already linked to dotfiles${RESET}"
   else
     # file exists, but is not a valid symlink to dotfiles
-    mv ~/.profile ~/.profile.bak && ln -s dotfiles/profile ~/.profile
+    mv ~/.profile ~/.profile.bak && ln -s ~/dotfiles/profile ~/.profile
     if [ $? -eq 0 ]
     then
       # successfully added moved old file and linked to dotfiles
@@ -121,15 +121,15 @@ fi
 if [ ! -f ~/.vimrc ]
 then
   # file doesn't exist
-  ln -s dotfiles/vimrc ~/.vimrc && echo -e "${GREEN}.vimrc link created${RESET}"
+  ln -s ~/dotfiles/vimrc ~/.vimrc && echo -e "${GREEN}.vimrc link created${RESET}"
 else
-  if [ -L ~/.vimrc ] && [ "$(readlink ~/.vimrc)" = "dotfiles/vimrc" ]
+  if [ -L ~/.vimrc ] && [ "$(readlink ~/.vimrc)" = "~/dotfiles/vimrc" ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.vimrc already linked to dotfiles${RESET}"
   else
     # file exists, but is not a valid symlink to dotfiles
-    mv ~/.vimrc ~/.vimrc.bak && ln -s dotfiles/vimrc ~/.vimrc
+    mv ~/.vimrc ~/.vimrc.bak && ln -s ~/dotfiles/vimrc ~/.vimrc
     if [ $? -eq 0 ]
     then
       # successfully added moved old file and linked to dotfiles
@@ -147,15 +147,15 @@ fi
 if [ ! -f ~/.gitconfig ]
 then
   # file doesn't exist
-  ln -s dotfiles/gitconfig ~/.gitconfig && echo -e "${GREEN}.gitconfig link created${RESET}"
+  ln -s ~/dotfiles/gitconfig ~/.gitconfig && echo -e "${GREEN}.gitconfig link created${RESET}"
 else
-  if [ -L ~/.gitconfig ] && [ "$(readlink ~/.gitconfig)" = "dotfiles/gitconfig" ]
+  if [ -L ~/.gitconfig ] && [ "$(readlink ~/.gitconfig)" = "~/dotfiles/gitconfig" ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.gitconfig already linked to dotfiles${RESET}"
   else
     # file exists, but is not a valid symlink to dotfiles
-    mv ~/.gitconfig ~/.gitconfig.bak && ln -s dotfiles/gitconfig ~/.gitconfig
+    mv ~/.gitconfig ~/.gitconfig.bak && ln -s ~/dotfiles/gitconfig ~/.gitconfig
     if [ $? -eq 0 ]
     then
       # successfully added moved old file and linked to dotfiles
