@@ -94,7 +94,11 @@ shopt -s histappend
 shopt -s histverify
 
 # shell options
+# dotglob includes hidden files in * wildcard
+shopt -s dotglob
+# enables extended wildcard logics, like rm !(*.jpg) <- removes all non-jpg files
 shopt -s extglob
+# enables ** to recursively match directories
 shopt -s globstar
 
 # tmux TERM fix
@@ -111,3 +115,5 @@ export LESS='-R'
 
 # change to user splunk
 alias splk='sudo -iu splunk'
+
+source ~/dotfiles/bashrc
