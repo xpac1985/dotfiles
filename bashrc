@@ -58,12 +58,12 @@ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-no
   }
 fi
 
-if [ -f /opt/splunk/bin/setSplunkEnv ]; then
-  source /opt/splunk/bin/setSplunkEnv
-fi
-
-if [ -f /opt/splunkforwarder/bin/setSplunkEnv ]; then
-  source /opt/splunkforwarder/bin/setSplunkEnv
+if [ $USER = "splunk" ] || [ $HOME = "/opt/splunk" ] || [ $HOME = "/opt/splunkforwarder" ]; then
+  if [ -f /opt/splunk/bin/setSplunkEnv ]; then
+    source /opt/splunk/bin/setSplunkEnv
+  elif [ -f /opt/splunkforwarder/bin/setSplunkEnv ]; then
+    source /opt/splunkforwarder/bin/setSplunkEnv
+  fi
 fi
 
 # shortcut to create backup of a file
@@ -108,3 +108,6 @@ alias nano='vim'
 
 # less should use ANSI color codes
 export LESS='-R'
+
+# change to user splunk
+alias splk='sudo -iu splunk'
