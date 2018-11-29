@@ -12,7 +12,7 @@ then
   # file doesn't exist
   ln -s ~/dotfiles/bashrc ~/.bashrc && echo -e "${GREEN}.bashrc link created${RESET}"
 else
-  if [ -L ~/.bashrc ] && [ "$(readlink ~/.bashrc)" = "~/dotfiles/bashrc" ]
+  if [ -L ~/.bashrc ] && [ "$(readlink ~/.bashrc)" = ~/dotfiles/bashrc ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.bashrc already linked to dotfiles${RESET}"
@@ -45,7 +45,7 @@ then
   # file doesn't exist
   ln -s ~/dotfiles/nanorc ~/.nanorc && echo -e "${GREEN}.nanorc link created${RESET}"
 else
-  if [ -L ~/.nanorc ] && [ "$(readlink ~/.nanorc)" = "~/dotfiles/nanorc" ]
+  if [ -L ~/.nanorc ] && [ "$(readlink ~/.nanorc)" = ~/dotfiles/nanorc ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.nanorc already linked to dotfiles${RESET}"
@@ -71,7 +71,7 @@ then
   # file doesn't exist
   ln -s ~/dotfiles/tmux.conf ~/.tmux.conf && echo -e "${GREEN}.tmux.conf link created${RESET}"
 else
-  if [ -L ~/.tmux.conf ] && [ "$(readlink ~/.tmux.conf)" = "~/dotfiles/tmux.conf" ]
+  if [ -L ~/.tmux.conf ] && [ "$(readlink ~/.tmux.conf)" = ~/dotfiles/tmux.conf ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.tmux.conf already linked to dotfiles${RESET}"
@@ -97,7 +97,7 @@ then
   # file doesn't exist
   ln -s ~/dotfiles/profile ~/.profile && echo -e "${GREEN}.profile link created${RESET}"
 else
-  if [ -L ~/.profile ] && [ "$(readlink ~/.profile)" = "~/dotfiles/profile" ]
+  if [ -L ~/.profile ] && [ "$(readlink ~/.profile)" = ~/dotfiles/profile ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.profile already linked to dotfiles${RESET}"
@@ -123,7 +123,7 @@ then
   # file doesn't exist
   ln -s ~/dotfiles/vimrc ~/.vimrc && echo -e "${GREEN}.vimrc link created${RESET}"
 else
-  if [ -L ~/.vimrc ] && [ "$(readlink ~/.vimrc)" = "~/dotfiles/vimrc" ]
+  if [ -L ~/.vimrc ] && [ "$(readlink ~/.vimrc)" = ~/dotfiles/vimrc ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.vimrc already linked to dotfiles${RESET}"
@@ -149,7 +149,7 @@ then
   # file doesn't exist
   ln -s ~/dotfiles/gitconfig ~/.gitconfig && echo -e "${GREEN}.gitconfig link created${RESET}"
 else
-  if [ -L ~/.gitconfig ] && [ "$(readlink ~/.gitconfig)" = "~/dotfiles/gitconfig" ]
+  if [ -L ~/.gitconfig ] && [ "$(readlink ~/.gitconfig)" = ~/dotfiles/gitconfig ]
   then
     # file exists and is valid symlink to dotfiles
     echo -e "${GREEN}.gitconfig already linked to dotfiles${RESET}"
