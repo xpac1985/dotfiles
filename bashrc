@@ -116,4 +116,30 @@ export LESS='-R'
 # change to user splunk
 alias splk='sudo -iu splunk'
 
-source ~/dotfiles/bashrc
+# auto update dotfiles
+dotfiles-update() {
+  local dotfilesdir ahead behind changes GREEN RED YELLOW RESET
+  GREEN='\033[0;32m'
+  RED='\033[0;31m'
+  YELLOW='\033[0;33m'
+  RESET='\033[0m'
+  dotfilesdir=$(echo ~/dotfiles/.git/)
+  git --git-dir="$dotfilesdir" fetch
+  git --git-dir="$dotfilesdir" diff-index --quiet HEAD --
+  changes=$?
+  ahead=$(git --git-dir="$dotfilesdir" rev-list --count origin/master..master)
+  behind=$(git --git-dir="$dotfilesdir" rev-list --count origin/master..master)
+  if [ "$changes" -gt 0 ]; then
+    echo -e "${RED}Your dotfiles have uncommited changes, please clean up. Skipping update${RESET}"
+  elif [ "$ahead" -gt 0 ]; then
+    echo -e "${RED}Your dotfiles have unpushed commits, please clean up. Skipping update${RESET}"
+  elif [ "$behind" -gt 0 ]; then
+    echo -e "${YELLOW}Updating dotfiles...${RESET}"
+    git --git-dir="$dotfilesdir" pull
+    source ~/dotfiles/bashrc
+  else
+    echo -e "${GREEN}dotfiles up to date${RESET}"
+  fi
+}
+
+dotfiles-update
