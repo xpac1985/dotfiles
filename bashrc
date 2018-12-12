@@ -58,11 +58,17 @@ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-no
   }
 fi
 
-if [ $USER = "splunk" ] || [ $HOME = "/opt/splunk" ] || [ $HOME = "/opt/splunkforwarder" ]; then
-  if [ -f /opt/splunk/bin/setSplunkEnv ]; then
+if [[ $USER = "splunk" ]] || [[ $HOME = "/opt/splunk" ]] || [[ $HOME = "/opt/splunkforwarder" ]]; then
+  if [[ -f /opt/splunk/bin/setSplunkEnv ]]; then
     source /opt/splunk/bin/setSplunkEnv
-  elif [ -f /opt/splunkforwarder/bin/setSplunkEnv ]; then
+  elif [[ -f /opt/splunkforwarder/bin/setSplunkEnv ]]; then
     source /opt/splunkforwarder/bin/setSplunkEnv
+  fi
+elif [[ $(id -u spluk 2>/dev/null || echo -1) -ge 0 ]]; then
+  if [[ -x $(which sudo) ]] && [[ $EUID -ne 0 ]]; then
+    alias splk="sudo su - splunk"
+  else
+    alias splk="su - splunk"
   fi
 fi
 
@@ -107,14 +113,11 @@ alias tmux='TERM=screen-256color tmux'
 # grep
 alias grepex='grep -P'
 
-# nano
+# bye bye nano
 alias nano='vim'
 
 # less should use ANSI color codes
 export LESS='-R'
-
-# change to user splunk
-alias splk='sudo -iu splunk'
 
 # auto update dotfiles
 dotfiles-update() {
