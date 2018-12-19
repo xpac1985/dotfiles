@@ -132,7 +132,7 @@ dotfiles-update() {
   (git --git-dir="$gitdir" --work-tree="$dotfilesdir" fetch && git --git-dir="$gitdir" --work-tree="$dotfilesdir" diff-index --quiet HEAD --) || (echo -e "${RED}Update check failed...${RESET}" && exit 1)
   changes=$?
   ahead=$(git --git-dir="$gitdir" --work-tree="$dotfilesdir" rev-list --count origin/master..master)
-  behind=$(git --git-dir="$gitdir" --work-tree="$dotfilesdir" rev-list --count origin/master..master)
+  behind=$(git --git-dir="$gitdir" --work-tree="$dotfilesdir" rev-list --count master..origin/master)
   if [ "$changes" -gt 0 ]; then
     echo -e "${RED}Your dotfiles have uncommited changes, please clean up. Skipping update${RESET}"
   elif [ "$ahead" -gt 0 ]; then
