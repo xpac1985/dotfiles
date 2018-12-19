@@ -121,6 +121,7 @@ export LESS='-R'
 
 # auto update dotfiles
 dotfiles-update() {
+(
   local dotfilesdir gitdir ahead behind changes GREEN RED YELLOW RESET
   GREEN='\033[0;32m'
   RED='\033[0;31m'
@@ -128,8 +129,7 @@ dotfiles-update() {
   RESET='\033[0m'
   gitdir=$(echo ~/dotfiles/.git/)
   dotfilesdir=$(echo ~/dotfiles/)
-  git --git-dir="$gitdir" --work-tree="$dotfilesdir" fetch
-  git --git-dir="$gitdir" --work-tree="$dotfilesdir" diff-index --quiet HEAD --
+  git --git-dir="$gitdir" --work-tree="$dotfilesdir" fetch && git --git-dir="$gitdir" --work-tree="$dotfilesdir" diff-index --quiet HEAD -- || echo -e "${RED}Update check failed...${RESET}" && exit 1
   changes=$?
   ahead=$(git --git-dir="$gitdir" --work-tree="$dotfilesdir" rev-list --count origin/master..master)
   behind=$(git --git-dir="$gitdir" --work-tree="$dotfilesdir" rev-list --count origin/master..master)
@@ -144,6 +144,7 @@ dotfiles-update() {
   else
     echo -e "${GREEN}dotfiles up to date${RESET}"
   fi
+)
 }
 
 dotfiles-update
