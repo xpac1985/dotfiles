@@ -129,7 +129,7 @@ dotfiles-update() {
   RESET='\033[0m'
   gitdir=$(echo ~/dotfiles/.git/)
   dotfilesdir=$(echo ~/dotfiles/)
-  git --git-dir="$gitdir" --work-tree="$dotfilesdir" fetch && git --git-dir="$gitdir" --work-tree="$dotfilesdir" diff-index --quiet HEAD -- || echo -e "${RED}Update check failed...${RESET}" && exit 1
+  (git --git-dir="$gitdir" --work-tree="$dotfilesdir" fetch && git --git-dir="$gitdir" --work-tree="$dotfilesdir" diff-index --quiet HEAD --) || (echo -e "${RED}Update check failed...${RESET}" && exit 1)
   changes=$?
   ahead=$(git --git-dir="$gitdir" --work-tree="$dotfilesdir" rev-list --count origin/master..master)
   behind=$(git --git-dir="$gitdir" --work-tree="$dotfilesdir" rev-list --count origin/master..master)
