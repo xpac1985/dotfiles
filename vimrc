@@ -16,3 +16,6 @@ set encoding=utf-8
 
 " enable syntax highlighting
 syntax on
+
+" enable colors for dack backgrounds
+set background=dark
