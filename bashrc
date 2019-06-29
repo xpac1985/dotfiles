@@ -64,7 +64,7 @@ if [[ $USER = "splunk" ]] || [[ $HOME = "/opt/splunk" ]] || [[ $HOME = "/opt/spl
   elif [[ -f /opt/splunkforwarder/bin/setSplunkEnv ]]; then
     source /opt/splunkforwarder/bin/setSplunkEnv
   fi
-elif [[ $(id -u spluk 2>/dev/null || echo -1) -ge 0 ]]; then
+elif [[ $(id -u splunk 2>/dev/null || echo -1) -ge 0 ]]; then
   if [[ -x $(which sudo) ]] && [[ $EUID -ne 0 ]]; then
     alias splk="sudo su - splunk"
   else
