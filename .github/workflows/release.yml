@@ -23,5 +23,5 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Archive, compress and base64-encode all files
-      run: cd $GITHUB_WORKSPACE && tar cvzf dotfiles.tgz . && base64 -e > dotfiles.tgz.b64
+      run: cd $GITHUB_WORKSPACE && tar cvzf ../dotfiles.tgz . && base64 -e ../dotfiles.tgz > ../dotfiles.tgz.b64
 
