@@ -1,1 +1,2 @@
-# no ignores needed so far
+# ignore vim swap files
+**/*.swp
