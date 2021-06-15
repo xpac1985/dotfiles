@@ -19,7 +19,3 @@ syntax on
 
 " enable colors for dack backgrounds
 set background=dark
-
-" show end of line, tab etc
-set list
-set listchars=eol:¬,tab:▸·,trail:·
