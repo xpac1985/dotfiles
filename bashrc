@@ -114,6 +114,7 @@ alias grepex='grep -P'
 
 # bye bye nano
 alias nano='vim'
+export EDITOR='vim'
 
 # less should use ANSI color codes
 export LESS='-R'
