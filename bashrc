@@ -88,6 +88,9 @@ alias llt='ll --sort=time'
 shopt -s autocd
 shopt -s cdspell
 
+# rm
+alias rm='rm --one-file-system --preserve-root -I'
+
 # history
 HISTFILESIZE=1000000
 HISTSIZE=1000000
