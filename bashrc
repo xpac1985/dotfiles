@@ -124,7 +124,7 @@ export LESS='-R'
 
 ### host specific settings
 # wireguard toggle for laptops
-if hostname -s | grep -q bria; then
+if hostname -s | grep -q -E "\b(bria)\b"; then
   alias vpnhomeonly='(nmcli -g GENERAL.STATE c show vpn_home_only | grep -q -E "\bactiv") && nmcli c down vpn_home_only || nmcli c up vpn_home_only'
   alias vpnhomeall='(nmcli -g GENERAL.STATE c show vpn_home_all | grep -q -E "\bactiv") && nmcli c down vpn_home_all || nmcli c up vpn_home_all'
   alias vpnhome='for conn in vpn_home_only vpn_home_all; do echo "${conn}: $(nmcli -g GENERAL.STATE c s ${conn})"; done'
