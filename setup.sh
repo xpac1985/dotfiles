@@ -1,11 +1,12 @@
 #!/bin/bash
 
 setup-dotfiles() {
-  local GREEN RED YELLOW RESET
+  local GREEN RED YELLOW RESET GIT_PUSH_URL
   GREEN='\033[0;32m'
   RED='\033[0;31m'
   YELLOW='\033[0;33m'
   RESET='\033[0m'
+  GIT_PUSH_URL='git@github.com:xpac1985/dotfiles.git'
   
   ### .bashrc
   
@@ -167,6 +168,17 @@ setup-dotfiles() {
         echo -e "${RED}Failed to either move ~/.gitconfig to ~/.gitconfig.bak or create symlink${RESET}"
       fi
     fi
+  fi
+
+  ### Change git repo push URL
+  git remote -v | grep -q "${GIT_PUSH_URL}"
+  if [ $? -eq 0 ]
+  then
+    echo -e "${GREEN}Git repo push URL already properly set to use SSH${RESET}"
+  else
+    git remote set-url --push origin ${GIT_PUSH_URL}
+    git remote -v | grep "${GIT_PUSH_URL}"
+    echo -e "${YELLOW}Git repo push URL should now be set to use SSH${RESET}"
   fi
 }
 
