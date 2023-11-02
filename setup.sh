@@ -1,12 +1,15 @@
 #!/bin/bash
 
 setup-dotfiles() {
-  local GREEN RED YELLOW RESET GIT_PUSH_URL
+  local GREEN RED YELLOW RESET
   GREEN='\033[0;32m'
   RED='\033[0;31m'
   YELLOW='\033[0;33m'
   RESET='\033[0m'
+
+  local GIT_PUSH_URL GIT_DIR
   GIT_PUSH_URL='git@github.com:xpac1985/dotfiles.git'
+  GIT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # stolen from https://stackoverflow.com/a/246128/2177148
   
   ### .bashrc
   
@@ -171,14 +174,18 @@ setup-dotfiles() {
   fi
 
   ### Change git repo push URL
-  git remote -v | grep -q "${GIT_PUSH_URL}"
+  git --git-dir="${GIT_DIR}/.git" remote -v | grep -q "${GIT_PUSH_URL}"
   if [ $? -eq 0 ]
   then
     echo -e "${GREEN}Git repo push URL already properly set to use SSH${RESET}"
   else
-    git remote set-url --push origin ${GIT_PUSH_URL}
-    git remote -v | grep "${GIT_PUSH_URL}"
-    echo -e "${YELLOW}Git repo push URL should now be set to use SSH${RESET}"
+    git --git-dir="${GIT_DIR}/.git" remote set-url --push origin ${GIT_PUSH_URL}
+    git --git-dir="${GIT_DIR}/.git" remote -v | grep "(push)" | grep -q "${GIT_PUSH_URL}"
+    if [ $? -eq 0]; then
+      echo -e "${YELLOW}Git repo push URL now set to use SSH${RESET}"
+    else
+      echo -e "${RED}Failed to change Git repo push URL for reasons unknown to mankind${RESET}"
+    fi
   fi
 }
 
