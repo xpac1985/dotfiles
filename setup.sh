@@ -10,6 +10,7 @@ setup-dotfiles() {
   local GIT_PUSH_URL GIT_DIR
   GIT_PUSH_URL='git@github.com:xpac1985/dotfiles.git'
   GIT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # stolen from https://stackoverflow.com/a/246128/2177148
+
   
   ### .bashrc
   
@@ -146,7 +147,38 @@ setup-dotfiles() {
       fi
     fi
   fi
+
   
+  ### init.vim
+  # symlink from vimrc
+  
+  if [ ! -f ~/.config/nvim/init.vim ]
+  then
+    # file doesn't exist
+    if [ ! -d ~/.config/nvim/ ]; then
+      # config directory doesn't exist
+      mkdir -p ~/.config/nvim/ && echo -e "${GREEN}nvim config directory created${RESET}"
+    fi
+    ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim && echo -e "${GREEN}vim.init link created${RESET}"
+  else
+    if [ -L ~/.config/nvim/init.vim ] && [ "$(readlink ~/.config/nvim/init.vim)" = ~/dotfiles/vimrc ]
+    then
+      # file exists and is valid symlink to dotfiles
+      echo -e "${GREEN}vim.init already linked to dotfiles${RESET}"
+    else
+      # file exists, but is not a valid symlink to dotfiles
+      mv ~/.config/nvim/init.vim ~/.config/nvim/init.vim.bak && ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
+      if [ $? -eq 0 ]
+      then
+        # successfully added moved old file and linked to dotfiles
+        echo -e "${YELLOW}Moved existing ~/.config/nvim/init.vim to ~/.config/nvim/init.vim.bak, then linked init.vim to dotfiles${RESET}"
+      else
+        # failed to either move old file or link to dotfiles
+        echo -e "${RED}Failed to either move ~/.config/nvim/init.vim to ~/.config/nvim/init.vim.bak or create symlink${RESET}"
+      fi
+    fi
+  fi
+ 
   
   ### .gitconfig
   
@@ -173,7 +205,9 @@ setup-dotfiles() {
     fi
   fi
 
+
   ### Change git repo push URL
+
   git --git-dir="${GIT_DIR}/.git" remote -v | grep -q "${GIT_PUSH_URL}"
   if [ $? -eq 0 ]
   then
@@ -181,7 +215,7 @@ setup-dotfiles() {
   else
     git --git-dir="${GIT_DIR}/.git" remote set-url --push origin ${GIT_PUSH_URL}
     git --git-dir="${GIT_DIR}/.git" remote -v | grep "(push)" | grep -q "${GIT_PUSH_URL}"
-    if [ $? -eq 0]; then
+    if [ $? -eq 0 ]; then
       echo -e "${YELLOW}Git repo push URL now set to use SSH${RESET}"
     else
       echo -e "${RED}Failed to change Git repo push URL for reasons unknown to mankind${RESET}"
