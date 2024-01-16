@@ -28,7 +28,7 @@ setup-dotfiles() {
       if grep -q 'source ~/dotfiles/bashrc' ~/.bashrc
       then
         # file has a source statement for dotfiles
-        echo -e "${YELLOW}.bashrc already exists, and it sources dotfiles/bashrc${RESET}"
+        echo -e "${GREEN}.bashrc already exists, and it sources dotfiles/bashrc${RESET}"
       else
         # file does not have a source statement for dotfiles
         printf '\nsource ~/dotfiles/bashrc\n' >> ~/.bashrc
