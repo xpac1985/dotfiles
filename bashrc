@@ -58,12 +58,7 @@ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-no
   }
 fi
 
-if [[ $USER = "splunk" ]] || [[ $HOME = "/opt/splunk" ]] || [[ $HOME = "/opt/splunkforwarder" ]]; then
-  export SPLUNK_HOME=$HOME
-  if [[ -f $SPLUNK_HOME/share/splunk/cli-command-completion.sh ]]; then
-    . $SPLUNK_HOME/share/splunk/cli-command-completion.sh
-  fi
-elif [[ $(id -u splunk 2>/dev/null || echo -1) -ge 0 ]]; then
+if ! [[ $USER = "splunk" ]]; then
   if [[ -x $(which sudo) ]] && [[ $EUID -ne 0 ]]; then
     alias splk="sudo su - splunk"
   else
