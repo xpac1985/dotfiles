@@ -206,6 +206,32 @@ setup-dotfiles() {
   fi
 
 
+  ### .ssh/config
+  
+  if [ ! -f ~/.ssh/config ]
+  then
+    # file doesn't exist
+    ln -s ~/dotfiles/sshconfig ~/.ssh/config && echo -e "${GREEN}.ssh/config link created${RESET}"
+  else
+    if [ -L ~/.ssh/config ] && [ "$(readlink ~/.ssh/config)" = ~/dotfiles/sshconfig ]
+    then
+      # file exists and is valid symlink to dotfiles
+      echo -e "${GREEN}.ssh/config already linked to dotfiles${RESET}"
+    else
+      # file exists, but is not a valid symlink to dotfiles
+      mv ~/.ssh/config ~/.ssh/config.bak && ln -s ~/dotfiles/sshconfig ~/.ssh/config
+      if [ $? -eq 0 ]
+      then
+        # successfully added moved old file and linked to dotfiles
+        echo -e "${YELLOW}Moved existing ~/.ssh/config to ~/.ssh/config.bak, then linked .ssh/config to dotfiles${RESET}"
+      else
+        # failed to either move old file or link to dotfiles
+        echo -e "${RED}Failed to either move ~/.ssh/config to ~/.ssh/config.bak or create symlink${RESET}"
+      fi
+    fi
+  fi
+
+
   ### Change git repo push URL
 
   git --git-dir="${GIT_DIR}/.git" remote -v | grep -q "${GIT_PUSH_URL}"

@@ -1,0 +1,24 @@
+Host *
+  ForwardAgent yes
+
+Host bosco
+  HostName bosco.home.areafunky.net
+
+Host murmel
+  HostName murmel.areafunky.net
+  Port 42022
+
+Host murmel-vpn
+  HostName 172.23.0.1
+  Port 42022
+
+Host limbo
+  HostName limbo.areafunky.net
+  Port 42022
+
+Host limbo-vpn
+  HostName 172.23.0.6
+  Port 42022
+
+Host hafen
+  Hostname hafen.home.areafunky.net
