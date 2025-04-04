@@ -15,24 +15,23 @@ function __prompt_command() {
   local EXIT="$?"
   local HOST_COLOR="3"
   
-  PS1="\[$(tput bold)\]\[$(tput setaf 7)\]\t "
-  if [ $EXIT != 0 ]; then
-     PS1+="\[$(tput setaf 1)\]"
-  else
-     PS1+="\[$(tput setaf 2)\]"
-  fi
-  
-  PS1+="\$? \[$(tput setaf 7)\]["
-  
+  PS1="\[$(tput bold)\]\[$(tput setaf 7)\]\t \[$(tput setaf 6)\]["
+ 
   if [ $EUID != 0 ]; then
     PS1+="\[$(tput setaf 7)\]\u"
   else
     PS1+="\[$(tput setaf 1)\]\u"
   fi
-  
-  PS1+="\[$(tput setaf 7)\]@\[$(tput setaf $HOST_COLOR)\]\h\[$(tput setaf 7)\]] \[$(tput setaf 2)\]\$PWD \[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
-
-  history -a  
+ 
+  PS1+="\[$(tput setaf 1)\]@\[$(tput setaf $HOST_COLOR)\]\h\[$(tput setaf 6)\]] \[$(tput setaf 2)\]\$PWD\n"
+ 
+  if [ $EXIT != 0 ]; then
+     PS1+="\[$(tput setaf 1)\]\$? "
+  else
+     PS1+="\[$(tput setaf 2)\]\$? "
+  fi
+ 
+  PS1+="\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
 }
 
 # use ALL the colors!
