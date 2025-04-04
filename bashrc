@@ -12,18 +12,25 @@ export PROMPT_COMMAND=__prompt_command
 function __prompt_command() {
   ### 0 = black, 1 = red, 2 = green, 3 = yellow
   ### 4 = blue, 5 = violet, 6 = cyan, 7 = white
+  local HOST_SHORTNAME="DS"
   local EXIT="$?"
   local HOST_COLOR="3"
-  
+ 
   PS1="\[$(tput bold)\]\[$(tput setaf 7)\]\t \[$(tput setaf 6)\]["
  
   if [ $EUID != 0 ]; then
-    PS1+="\[$(tput setaf 7)\]\u"
+    PS1+="\[$(tput setaf 7)\]"
   else
-    PS1+="\[$(tput setaf 1)\]\u"
+    PS1+="\[$(tput setaf 1)\]"
   fi
  
-  PS1+="\[$(tput setaf 1)\]@\[$(tput setaf $HOST_COLOR)\]\h\[$(tput setaf 6)\]] \[$(tput setaf 2)\]\$PWD\n"
+  PS1+="${USER/@GROUP.KNAUF.LOC/}\[$(tput setaf 1)\]@\[$(tput setaf $HOST_COLOR)\]\h"
+ 
+  if [ "$HOST_SHORTNAME" !=  "" ]; then
+    PS1+=" \[$(tput setaf 1)\]$SERVER_SHORTNAME"
+  fi
+ 
+  PS1+="\[$(tput setaf 6)\]] \[$(tput setaf 2)\]\$PWD\n"
  
   if [ $EXIT != 0 ]; then
      PS1+="\[$(tput setaf 1)\]\$? "
@@ -32,6 +39,8 @@ function __prompt_command() {
   fi
  
   PS1+="\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
+ 
+  history -a
 }
 
 # use ALL the colors!
