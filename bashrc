@@ -6,9 +6,6 @@
 # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# always follow symlinks to real target
-set -o physical
-
 # export and define the prompt command to display last return value and use a different color for root
 export PROMPT_COMMAND=__prompt_command
 
@@ -111,7 +108,6 @@ alias tmux='TERM=screen-256color tmux'
 alias grepex='grep -P'
 
 # bye bye nano
-alias nano='vim'
 export EDITOR='vim'
 
 # less should use ANSI color codes
