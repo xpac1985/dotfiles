@@ -12,7 +12,7 @@ export PROMPT_COMMAND=__prompt_command
 function __prompt_command() {
   ### 0 = black, 1 = red, 2 = green, 3 = yellow
   ### 4 = blue, 5 = violet, 6 = cyan, 7 = white
-  local HOST_SHORTNAME="DS"
+  local HOST_SHORTNAME=""
   local EXIT="$?"
   local HOST_COLOR="3"
  
@@ -27,7 +27,7 @@ function __prompt_command() {
   PS1+="${USER/@GROUP.KNAUF.LOC/}\[$(tput setaf 1)\]@\[$(tput setaf $HOST_COLOR)\]\h"
  
   if [ "$HOST_SHORTNAME" !=  "" ]; then
-    PS1+=" \[$(tput setaf 1)\]$SERVER_SHORTNAME"
+    PS1+=" \[$(tput setaf 1)\]$HOST_SHORTNAME"
   fi
  
   PS1+="\[$(tput setaf 6)\]] \[$(tput setaf 2)\]\$PWD\n"
