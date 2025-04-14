@@ -32,10 +32,10 @@ function __prompt_command() {
  
   PS1+="\[$(tput setaf 6)\]] \[$(tput setaf 2)\]\$PWD\n"
  
-  if [ $EXIT != 0 ]; then
-     PS1+="\[$(tput setaf 1)\]\$? "
+  if [ $EXIT -eq 0 ]; then
+     PS1+="\[$(tput setaf 2)\]\$EXIT "
   else
-     PS1+="\[$(tput setaf 2)\]\$? "
+     PS1+="\[$(tput setaf 1)\]\$EXIT "
   fi
  
   PS1+="\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
@@ -138,6 +138,9 @@ dotfiles-update() {
   YELLOW='\033[0;33m'
   RESET='\033[0m'
   gitdir=$(echo ~/dotfiles/.git/)
+  if [ ! -d "$gitdir" ]; then
+    exit
+  fi
   dotfilesdir=$(echo ~/dotfiles/)
   (git --git-dir="$gitdir" --work-tree="$dotfilesdir" fetch && git --git-dir="$gitdir" --work-tree="$dotfilesdir" diff-index --quiet HEAD --) || (echo -e "${RED}Update check failed...${RESET}" && exit 1)
   changes=$?
