@@ -24,7 +24,7 @@ function __prompt_command() {
     PS1+="\[$(tput setaf 1)\]"
   fi
  
-  PS1+="${USER/@GROUP.KNAUF.LOC/}\[$(tput setaf 1)\]@\[$(tput setaf $HOST_COLOR)\]\h"
+  PS1+="${USER/@example.ad.domain/}\[$(tput setaf 1)\]@\[$(tput setaf $HOST_COLOR)\]\h"
  
   if [ "$HOST_SHORTNAME" !=  "" ]; then
     PS1+=" \[$(tput setaf 1)\]$HOST_SHORTNAME"
