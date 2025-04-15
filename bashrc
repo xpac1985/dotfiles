@@ -10,11 +10,15 @@ shopt -s checkwinsize
 export PROMPT_COMMAND=__prompt_command
 
 function __prompt_command() {
+  # this must be the FIRST comand to work
+  local EXIT="$?"
+
   ### 0 = black, 1 = red, 2 = green, 3 = yellow
   ### 4 = blue, 5 = violet, 6 = cyan, 7 = white
-  local HOST_SHORTNAME=""
-  local EXIT="$?"
   local HOST_COLOR="3"
+
+  # set HOST_SHORTNAME either here or somewhere else (e.g. /etc/bashrc) if you wanna use it
+  # local HOST_SHORTNAME="myshortname"
  
   PS1="\[$(tput bold)\]\[$(tput setaf 7)\]\t \[$(tput setaf 6)\]["
  
@@ -33,9 +37,9 @@ function __prompt_command() {
   PS1+="\[$(tput setaf 6)\]] \[$(tput setaf 2)\]\$PWD\n"
  
   if [ $EXIT -eq 0 ]; then
-     PS1+="\[$(tput setaf 2)\]\$EXIT "
+     PS1+="\[$(tput setaf 2)\]$EXIT "
   else
-     PS1+="\[$(tput setaf 1)\]\$EXIT "
+     PS1+="\[$(tput setaf 1)\]$EXIT "
   fi
  
   PS1+="\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
