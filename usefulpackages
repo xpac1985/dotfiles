@@ -1,0 +1,12 @@
+# better du
+duf
+# better du with sub dir browsing 
+ncdu
+# JSON tool
+jq
+# YAML tool
+yq
+# better cat
+bat
+# grep but faster
+ripgrep
