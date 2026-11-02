@@ -10,3 +10,7 @@ yq
 bat
 # grep but faster
 ripgrep
+# simpler man pages
+tldr
+# fuzzy file finder
+fzf
